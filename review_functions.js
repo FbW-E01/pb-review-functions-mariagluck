@@ -17,7 +17,8 @@ function capitalize(string) {
     
     return words.join(" ");
 }
-console.log(capitalize("hello darling, new day and new life"));
+console.log(capitalize("hello darling, new day and new life")); 
+// Hello Darling, New Day And New Life
 
 
 
@@ -27,14 +28,14 @@ function lastItemArray(array) {
     return array[array.length - 1]
 }
 
-arrayExample = ["banana", 34, 78, 56];
-console.log(lastItemArray(arrayExample)); //56
+fruits = ["banana", "🍇", "🍓", "🥝"];
+console.log(lastItemArray(fruits)); //🥝
 
 // 4. Write an arrow function that takes in an array and *returns* the first item in that array.
 
 const firstArrayItem = array => array[0];
 
-console.log(firstArrayItem(arrayExample));// banana
+console.log(firstArrayItem(fruits));// banana
 
 // 5. Write an arrow function that takes in a string and *returns* the last three characters of that string.
 
@@ -48,19 +49,34 @@ console.log(lastThreeLetters(myString)); // ght
 
 const firstItemType = array => typeof array[0];
 
-console.log(firstItemType(arrayExample)); //string
+console.log(firstItemType(fruits)); //string
 
 
 // 7. Write an arrow function that takes in an array and *returns* true, if all items in that array have the same type.
+//this way:
+const sameType = array => array.every(i => typeof i== typeof array[0]); 
 
-const sameType = array => {
-    return array.filter(i => typeof i === typeof i++).length === array.length;
-  }
+//or this way:
+const sameType1 = array => {
+    for(let i = 0; i < array.length - 1; i++) {
+        if(typeof array[i] !== typeof array[i+1]) {
+            return false;
+        }
+    }
+    return true;
+}
 
-  console.log(sameType(arrayExample)); //false
 
-  const arrayExample2 = [1, 2, 3 , 4, 5];
-  console.log(sameType(arrayExample2)); // true
+console.log(sameType(fruits)); //true
+
+const numbers = [1, 2, 3 , 4, 5];
+console.log(sameType(numbers)); // true
+
+const mixedArray = ["hi", 1, 2, 3];
+console.log(sameType(mixedArray)); // false
+
+const numObjStr = [15, {name: "number"}, "🍓" ];
+console.log(sameType(numObjStr)); // false
 
 
 // 8. Print the `type` of a variable that has a normal function value.
